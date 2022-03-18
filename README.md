@@ -56,7 +56,7 @@ El tipo 'Nacimiento' es descrito en la clase base del proyecto, en la que se enc
  
 Propiedades derivadas: 
  
-- ** edad()** de tipo Integer, método que calcula la edad de las personas nacidas en tal fecha.
+- **edad()** de tipo Integer, método que calcula la edad de las personas nacidas en tal fecha.
 - **sumaNacimientos()** de tipo Integer, método que calcula el total de nacimientos producidos para el mismo registro(sin distinción de géneros).m
 
 **Constructores**:
