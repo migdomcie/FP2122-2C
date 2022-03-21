@@ -265,8 +265,4 @@ public class Nacimiento implements Comparable<Nacimiento>{
 		return res;
 	}
 }	
-/* TAREA:
-• Tener al menos una propiedad derivada. (cada alumno/a piense en una propiedad derivada que se
-pueda obtener a partir de los datos básicos del dataset). Resaltarla/s en README XXXXX ---> (revisar propiedad derivada)
 
- */

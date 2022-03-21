@@ -9,22 +9,27 @@ public class NacimientosTest01 {
 //Hospital Universitario San Cecilio;ESPECIALIDADES;Granada;Granada;09/11/2019;4;3;3.29;3.23;52.8;48.6;false
 	public static void main(String[] args) {
 		
-		//Inicialización objetos 'n', 'n1', 'n2', 
+		//Inicialización objetos 'n', 'n1', 'n2', 'n3' 
 		Nacimiento n= new Nacimiento("Hospital Universitario Virgen del Rocío", TipoCentro.REGIONAL,"Sevilla","Sevilla",
 				LocalDate.parse("04/09/2018",DateTimeFormatter.ofPattern("dd/MM/yyyy")),2,6,3.43,2.72,52.4,49.9,true);
 		Nacimiento n1= new Nacimiento("Hospital Universitario Virgen del Rocío", TipoCentro.REGIONAL,"Sevilla","Sevilla",
 				LocalDate.parse("04/09/2018",DateTimeFormatter.ofPattern("dd/MM/yyyy")),2,6,3.43,2.72,52.4,49.9,true);
 		Nacimiento n2= new Nacimiento("Hospital Universitario Virgen del Rocío", TipoCentro.REGIONAL,"Sevilla","Sevilla",
 				LocalDate.parse("04/09/2018",DateTimeFormatter.ofPattern("dd/MM/yyyy")),2,6,3.43,2.72,52.4,49.9,true);
-		
-		//Print de objeto 'n' en formato general y formato corto		
+		Nacimiento n3= new Nacimiento("Hospital Universitario Virgen de Valme","Sevilla","Sevilla",
+				LocalDate.parse("24/05/2019",DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+				
+		//Print de objeto 'n', 'n3' en formato general y formato corto		
 			System.out.println("Formato general---> "+n);
-			System.out.println("Formato corto---> "+n.formatoCorto());
-		
+			System.out.println("Formato corto---> "+n.formatoCorto()+"\n");
+			
+			System.out.println("Formato general---> "+n3);
+			System.out.println("Formato corto---> "+n3.formatoCorto()+"\n");
+			
 		//Set de la altura de 'n' a 3.5 y print de la propiedad
 		
 			n.setPromedioAltH(3.5);
-			System.out.println("PromedioAltH---> "+ n.getPromedioAltH());
+			System.out.println("PromedioAltH---> "+ n.getPromedioAltH()+"\n");
 		
 	
 		//Comprobación de todas las restricciones (peso, altura y helipuerto), modificando el objeto 'n' e inicializando otro objeto 'n3'
@@ -67,5 +72,4 @@ public class NacimientosTest01 {
 			
 	}
 	
-
 }
