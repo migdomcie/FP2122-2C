@@ -265,4 +265,3 @@ public class Nacimiento implements Comparable<Nacimiento>{
 		return res;
 	}
 }	
-

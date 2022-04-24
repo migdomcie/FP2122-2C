@@ -1,6 +1,6 @@
 package fp.nacimiento;
 
 public enum TipoCentro {
-	COMARCAL, CONCERTADO, ESPECIALIDADES, REGIONAL   
+	COMARCAL, CONCERTADO, ESPECIALIDADES, REGIONAL, PRIVADO   
 
 }
