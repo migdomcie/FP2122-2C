@@ -3,10 +3,14 @@ package fp.nacimiento;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Stream;
+
 import fp.nacimiento.*;
+import fp.utiles.Checkers;
 
 public class FactoríaNacimiento {
 	
@@ -26,9 +30,10 @@ public class FactoríaNacimiento {
 		return listaNacimientos;
 	}
 	
-	//metodo parsea tipo
+	//metodo parsea tipo 
 	public static Nacimiento parseaNacimiento (String s) {
 		String[] trozos= s.split(";");
+		Checkers.check("La cadena está mal troceada", trozos.length==12);
 		String nombre= trozos[0].trim();
 		TipoCentro tipoCentro= TipoCentro.valueOf(trozos[1].trim());
 		String municipio= trozos[2].trim();
@@ -47,9 +52,20 @@ public class FactoríaNacimiento {
 		return n;
 	}
 	
-	
-}
+	//metodo lee tipo con constructor stream
+	public static Informes leeInformeStream(String s) {
+		List<Nacimiento> listaNacimientos= new ArrayList<Nacimiento>();
+		Stream<Nacimiento> streamNac= listaNacimientos.stream();
+		try {
+			List<String> lineas= Files.readAllLines(Paths.get(s));
+			for(String linea: lineas.subList(1, lineas.size())) {
+				listaNacimientos.add(parseaNacimiento(linea));
+			}
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 
-	
-	
-	
+		return new Informes(Informes.fechaPredetInforme(), Informes.instituciónPredet(), Informes.numPredetInforme(), streamNac) ;
+	}
+}

@@ -1,8 +1,10 @@
 package fp.nacimientos.test;
 
-import java.time.*;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import fp.nacimiento.*;
 import fp.nacimientos.*;
 
@@ -31,13 +33,13 @@ public class NacimientosTest02 {
 		System.out.println("Los tres últimos: " + InformeNacimientos.getListaNacimientos().subList(InformeNacimientos.getTamañoListaNacimientos()-3, InformeNacimientos.getTamañoListaNacimientos()) +"\n");
 		
 		//Tests operaciones adicionales
-		System.out.println("El tamaño de la lista del dataset es: "+ InformeNacimientos.getTamañoListaNacimientos());
-		InformeNacimientos.añadeNacimiento(n1);
+		System.out.println("El tamaño de la lista del dataset es: "+ InformeNacimientos.getTamañoListaNacimientos());//utilizar metodos de op adicionales
+		InformeNacimientos.añadeNacimiento(n1);//utilizar metodos de op adicionales
 		InformeNacimientos.añadeNacimiento(n2);
 		System.out.println("Último nacimiento añadido: ''"+ InformeNacimientos.getListaNacimientos().get(InformeNacimientos.getTamañoListaNacimientos()-1)+ "''");
-		InformeNacimientos.añadeColeccionNacimientos(InformeNacimientos1.getListaNacimientos());
+		InformeNacimientos.añadeColeccionNacimientos(InformeNacimientos1.getListaNacimientos());//utilizar metodos de op adicionales
 		System.out.println("Últimos nacimientos añadidos: ''" + InformeNacimientos.getListaNacimientos().subList(InformeNacimientos.getListaNacimientos().indexOf(n1), InformeNacimientos.getListaNacimientos().indexOf(n2)+1) + "''");
-		InformeNacimientos.eliminaNacimiento(n2);
+		InformeNacimientos.eliminaNacimiento(n2);//utilizar metodos de op adicionales
 		System.out.println("Último nacimiento de la colección: ''"+ InformeNacimientos.getListaNacimientos().get(InformeNacimientos.getTamañoListaNacimientos()-1)+ "''\n");
 		
 		//Tests tratamientos secuenciales
@@ -45,9 +47,9 @@ public class NacimientosTest02 {
 		System.out.println("Método 2: El número de nacimientos producidos en el año " + año + " son "+ InformeNacimientos.calculaNumeroNacimientosAño(año) + " nacimientos");
 		System.out.println("Método 3: Los hospitales para la provincia de " + provincia + " que tienen helipuerto==" + valor + " son los siguientes: ");
 		for (String hospital: InformeNacimientos.filtraHospitalesProvinciaHelipuerto(provincia, valor)){
-			System.out.println(hospital);//utilizar metodos ttss
+			System.out.println(hospital);
 		}
-		System.out.println("Método 4: Los nacimientos producidos por provincia son los siguientes: " + InformeNacimientos.dicFiltraNacimientosProvincia());
+		System.out.println("Método 4: Los nacimientos producidos por provincia son los siguientes: " + InformeNacimientos.dicNacimientosProvincia());
 		System.out.println("Método 5: El número de nacimientos producidos por cada año son los siguientes: ");
 		for(Map.Entry<Integer,Integer> e :InformeNacimientos.dicCuentaNacimientosAño().entrySet()){
 			System.out.println(e);
