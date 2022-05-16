@@ -89,9 +89,10 @@ Además del tipo 'Nacimiento', que es descrito en la clase base del proyecto, he
 
 ### Factoría
 
-En la clase 'FactoríaNacimiento' se encuentran algunos de los métodos estáticos auxiliares del proyecto que, a nivel general, trabajan sobre datos del tipo base 'Nacimiento' para su correcta adaptación y uso, como lo son los siguientes métodos:s
-- **leeNacimientos(String fichero)**: de tipo static List<Nacimiento>, método que lee cada una de las líneas del fichero csv, el cual es aportado su ruta como parámetro, que devuelve una lista de nacimientos.i.
-- **parseaNacimiento (String s)**: de tipo static Nacimiento, método que trocea una línea del fichero csv que es aportada como parámetro y que, va asignando cada una de las propiedades del tipo 'Nacimiento' como variables para la posterior creación de un objeto del mismo tipo. 2
+En la clase 'FactoríaNacimiento' se encuentran algunos de los métodos estáticos auxiliares del proyecto que, a nivel general, trabajan sobre datos del tipo base 'Nacimiento' para su correcta adaptación y uso, como lo son los siguientes métodos:
+- **leeNacimientos(String fichero)**: de tipo static List<Nacimiento>, método que lee cada una de las líneas del fichero csv, el cual es aportado su ruta como parámetro, que devuelve una lista de nacimientos.
+- **parseaNacimiento (String s)**: de tipo static Nacimiento, método que trocea una línea del fichero csv que es aportada como parámetro y que, va asignando cada una de las propiedades del tipo 'Nacimiento' como variables para la posterior creación de un objeto del mismo tipo.
+- **leeInformeStream(String fichero)**: de tipo static Informes, método que lee cada una de las líneas del fichero csv, el cual es aportado su ruta como parámetro, que devuelve un objeto del tipo contenedor Informes.
 
 ### Tipo Contenedor
 El tipo 'Informes' es descrito en otra clase del proyecto, en la que se encuentran cada una de las propiedades, métodos y/o interfaces que trabajan sobre el tipo del mismo nombre. Básicamente, en este tipo, tratamos con las propiedades de un informe emitido por cualquier administración competente, como el nombre de la institución en cuestión, la fecha de emisión del informe, el número de serie de la institución que emite el informe, así como la lista de cada uno de los nacimientos que conforma el informe. Además, en tal clase, a parte de las propiedades antes mencionadas, han sido declarados métodos restrictivos, comparadores...
@@ -102,11 +103,16 @@ El tipo 'Informes' es descrito en otra clase del proyecto, en la que se encuentr
 - **númeroInforme** de tipo Integer, consultable y modificable.
 - **listaNacimientos** de tipo List<Nacimiento>, consultable.
 
+Propiedades predeterminadas (métodos estáticos):
+- **fechaPredetInforme()** de tipo LocalDate, devuelve la fecha a día de hoy.
+- **numPredetInforme()** de tipo Integer, devuelve un número aleatorio de 8 cifras.
+- **instituciónPredet()** de tipo String, devuelve la institución "Junta de Andalucía".
  
 **Constructores**: 
 
 - **C1**: recibe un parámetro por cada propiedad del tipo, excepto para la lista de nacimientos, que es inicializada como lista vacía.
 - **C2**: recibe un parámetro por cada propiedad del tipo.
+- **C3**: recibe un parámetro por cada propiedad del tipo, pasándose como último parámetro un stream de objetos del tipo base
  
 **Restricciones**:
  
@@ -133,10 +139,48 @@ Mediante el método procedente de la interfaz 'Comparable<>', '.compareTo()' sab
 
 - **existeNacimiento(Nacimiento n)** de tipo Boolean, método que determina si el nacimiento pasado como parámetro se encuentra dentro de la propiedad que conforma la lista de nacimientos del informe en cuestión.
 
+
 - **calculaNumeroNacimientosAño(String año)** de tipo Integer, método que calcula, en función al año pasado como parámetro, el número total de nacimientos producidos, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión.
+
 
 - **filtraHospitalesProvinciaHelipuerto(String provincia, Boolean helipuerto)** de tipo List<Nacimiento>, método que, en función a la provincia y valor de la propiedad helipuerto pasados como parámetros, devuelve una lista de hospitales, de entre los hospitales dados para los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión.
 
-- **dicFiltraNacimientosProvincia()** de tipo Map<String,List<Nacimiento>>, método que devuelve un Map en el que las claves son las provincias de los nacimientos en cuestión y los valores asociados a cada clave es una lista de los nacimientos producidos en dicha provincia de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión.
 
-- **dicCuentaNacimientosAño()** de tipo Map<Integer, Integer>, método que devuelve un Map en el que las claves son los años de los nacimientos en cuestión y los valores son el número total de nacimientos producidos en dicho año, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión.
+- **dicNacimientosProvincia()** de tipo Map<String,List<Nacimiento>>, método que devuelve un Map en el que las claves son las provincias de los nacimientos en cuestión y los valores asociados a cada clave es una lista de los nacimientos producidos en dicha provincia de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión.
+
+
+- **dicCuentaNacimientosAño()** de tipo Map<Integer, Integer>, método que devuelve un Map en el que las claves son los años de los nacimientos en cuestión y los valores son el número total de nacimientos producidos en dicho año, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **existeNacimientoStream(Nacimiento n)** de tipo Boolean, método que determina mediante el uso de la interfaz stream, si el nacimiento pasado como parámetro se encuentra dentro de la propiedad que conforma la lista de nacimientos del informe en cuestión
+
+
+- **calculaNumeroNacimientosAñoStream(String año)** de tipo Integer, método que calcula mediante el uso de la interfaz stream el número total de nacimientos producidos en función al año pasado como parámetro, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **filtraHospitalesProvinciaHelipuertoStream(String provincia, Boolean helipuerto)** de tipo List<Nacimiento>, método que en función a la provincia y valor de la propiedad helipuerto pasados como parámetros, mediante el uso de la interfaz stream, devuelve una lista de hospitales, de entre los hospitales dados para los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **calculaPesoMaximoProvinciaStream(String provincia)** de tipo Double, método que, mediante el uso de la interfaz stream, en función a una provincia pasada como parámetro, calcula el  mayor peso de una persona nacida de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **filtraNacimientosTipoHospitalFecha(String tipo)** de tipo List<Nacimieto>, método que en función al tipo de hospital de nacimiento, mediante el uso de la interfaz stream, devuelve una lista de nacimientos, de entre los hospitales dados para los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **dicNacimientosProvinciaStream()** de tipo Map<String, List<Nacimiento>>, método que, mediante el uso de la interfaz stream, devuelve un Map en el que las claves son las provincias de los nacimientos en cuestión y los valores asociados a cada clave son listas de los nacimientos producidos en dicha provincia de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **dicCuentaNacimientosAñoStream()** de tipo Map<Integer, Integer>, método que, mediante el uso de la interfaz stream, devuelve un Map en el que las claves son los años de los nacimientos en cuestión y los valores asociados a cada clave son el número total de nacimientos producidos en dicho año, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **calculaMunicipiosDistintosStream()** de tipo Set<String>, método que, mediante el uso de la interfaz stream, devuelve un Set en el que los elementos son los municipios distintos de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **dicCalculaEdadEnMesesMinimaHospitalStream()** de tipo Map<String, Integer>, método que, mediante el uso de la interfaz stream, devuelve un Map en el que las claves son los hospitales de los nacimientos en cuestión y los valores asociados a cada clave son las edades mínimas, en meses, de las personas nacidas para dicho hospital, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **dicMayoresAlturasProvinciaGénero(String género)** de tipo SortedMap<String, List<Double>>, método que, mediante el uso de la interfaz stream, en función al género que se pasa como parámetro, devuelve un Map en el que las claves son las provincias de los nacimientos en cuestión y los valores asociados a cada clave son listas de las mayores alturas de las personas nacidas para dicha provincia, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+
+
+- **maxDicCuentaHospitalesconHelipuertoProvincia()** de tipo Map.Entry<String, Long>, método que, mediante el uso de la interfaz stream, devuelve la entrada cuyo valor sea el mayor de entre el total de entradas de un Map en el que las claves son las provincias de los nacimientos en cuestión y los valores asociados a cada clave son el número total de nacimientos producidos cuyo hospital tiene helipuerto, de entre los nacimientos que conforman la propiedad del total de nacimientos del informe en cuestión
+ .

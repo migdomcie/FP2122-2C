@@ -53,11 +53,11 @@ public class FactoríaNacimiento {
 	}
 	
 	//metodo lee tipo con constructor stream
-	public static Informes leeInformeStream(String s) {
+	public static Informes leeInformeStream(String fichero) {
 		List<Nacimiento> listaNacimientos= new ArrayList<Nacimiento>();
 		Stream<Nacimiento> streamNac= listaNacimientos.stream();
 		try {
-			List<String> lineas= Files.readAllLines(Paths.get(s));
+			List<String> lineas= Files.readAllLines(Paths.get(fichero));
 			for(String linea: lineas.subList(1, lineas.size())) {
 				listaNacimientos.add(parseaNacimiento(linea));
 			}
