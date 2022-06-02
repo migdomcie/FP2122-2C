@@ -43,5 +43,7 @@ public class NacimientosTest03 {
 		System.out.println("Método 13: " + "La menor edad de las personas nacidas por hospital son las siguientes: " + InformeNacimientos.dicCalculaEdadEnMesesMinimaHospitalStream());
 		System.out.println("Método 14: " + "Las mayores alturas de las personas nacidas por provincia son las siguientes: " + InformeNacimientos.dicMayoresAlturasProvinciaGénero(género));
 		System.out.println("Método 15: " + "El mayor número de nacimientos producidos cuyo hospital tiene helipuerto es el siguiente: " + InformeNacimientos.maxDicCuentaHospitalesconHelipuertoProvincia());
+	
+		System.out.println("\nMétodo defensa: " + "Los promedios de nacimientos de hombres y mujeres para cada tipo de hospital son los siguientes: " + InformeNacimientos.ObtenerPromedioNacimientosPorTipoHospital());
 	}
 }

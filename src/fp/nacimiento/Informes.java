@@ -331,5 +331,17 @@ public class Informes implements Comparable<Informes>{
 		
 		return dic.entrySet().stream().max(Comparator.comparing(e -> e.getValue())).get();
 	}
+	
+	public Map<TipoCentro, Double> ObtenerPromedioNacimientosPorTipoHospital(){
+		return this.listaNacimientos.stream()
+				.collect(Collectors.groupingBy(Nacimiento::getTipoCentro, Collectors.collectingAndThen(Collectors.toList(), l -> calculaPromedioNacimientos(l))));
+		
+	}
+	
+	private Double calculaPromedioNacimientos(List<Nacimiento> l) {
+		Integer numeroTotalNacimientos=  l.size();
+		Integer numeroNacimientosHombresyMujeres= l.stream().mapToInt(Nacimiento::getnHombres).sum() + l.stream().mapToInt(Nacimiento::getnMujeres).sum() ;
+		return 1.0*numeroNacimientosHombresyMujeres / numeroTotalNacimientos;
+	}
 }
 
